@@ -1,0 +1,50 @@
+
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cabin Regular'), local('Cabin-Regular'), url(http://fonts.gstatic.com/s/cabin/v6/yQOMOX5hR0-6LTD879t-PQ.woff2) format('woff2'), url(http://fonts.gstatic.com/s/cabin/v6/JEgmtEDzc-IH8jBshQXrYA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Cabin SemiBold'), local('Cabin-SemiBold'), url(http://fonts.gstatic.com/s/cabin/v6/pOvYyCQeTTtw6RxdlpulSvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2'), url(http://fonts.gstatic.com/s/cabin/v6/bSicyj3YibVhVPhGZyWVI_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+body {
+	background: #f55;
+	font-family: 'Cabin';
+	font-weight: 400;
+	color: #fff;
+}
+
+a {
+	text-decoration: none;
+	text-align: bottom;
+	color: #fff;
+	display: inline-block;
+	perspective: 600pt;
+	perspective-origin: 50% 50%;
+	vertical-align: bottom;
+	white-space: nowrap;
+	outline: none;
+	transition: all .3s cubic-bezier(.5,0,0,1);
+}
+a::before {
+	background: rgba(255,255,255,.5);
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 100%;
+	padding: 2px;
+	top: -1px;
+	left: -1px;
+	z-index: -1;
+	transition: all .3s cubic-bezier(.5,0,0,1);
+	-webkit-transform: rotateX(80deg) translateY(150%);
+}
+a:focus::before,
+a:hover::before {
+	-webkit-transform: rotateX(0deg);
+}
