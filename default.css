@@ -43,8 +43,16 @@ a::before {
 	z-index: -1;
 	transition: all .3s cubic-bezier(.5,0,0,1);
 	-webkit-transform: rotateX(80deg) translateY(150%);
+	-moz-transform: rotateX(80deg) translateY(150%);
+	-ms-transform: rotateX(80deg) translateY(150%);
+	-o-transform: rotateX(80deg) translateY(150%);
+	transform: rotateX(80deg) translateY(150%);
 }
 a:focus::before,
 a:hover::before {
 	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	-ms-transform: rotateX(0deg);
+	-o-transform: rotateX(0deg);
+	transform: rotateX(0deg);
 }
