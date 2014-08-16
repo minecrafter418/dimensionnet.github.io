@@ -13,7 +13,7 @@
 }
 
 body {
-	background: #f55;
+	background: #333;
 	font-family: 'Cabin';
 	font-weight: 400;
 	color: #fff;
@@ -55,4 +55,99 @@ a:hover::before {
 	-ms-transform: rotateX(0deg);
 	-o-transform: rotateX(0deg);
 	transform: rotateX(0deg);
+}
+
+* {
+	transition: all .5s cubic-bezier(0.2,.3,0,1);
+}
+
+/* header */
+
+header {
+	background: #eee;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	z-index: 200;
+}
+header.start {
+	height: 100%;
+}
+@-webkit-keyframes headerstart {
+	to {
+		height: 0;
+	}
+}
+header #logo {
+	position: fixed;
+	top: 10pt;
+	left: 10pt;
+	height: 80pt;
+}
+header #logo.start {
+	left: 50%;
+	top: 50%;
+	height: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	-webkit-animation: logostart .5s cubic-bezier(0.2,.3,0,1);
+	animation: logostart .5s cubic-bezier(.2,.3,0.1);
+}
+@-webkit-keyframes logostart {
+	from {
+		top: 150%;
+	}
+}
+@keyframes logostart {from { top: 150%;}}
+
+#background {
+	width: 100%;
+	height: auto;
+	top: 0;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	position: fixed;
+	z-index: 1;
+	transition: top 0s;
+	clip: rect(0px,10000px,10000px,0px);
+}
+#background.bar {
+	clip: rect(0px,10000px,10000px,0px);
+	z-index: 100;
+}
+@-webkit-keyframes bgstart {
+	from {
+		top: 50%;
+	}
+}
+@media (max-aspect-ratio: 16/9) {
+	#background {
+		height: 100%;
+		width: auto;
+	}
+}
+
+/* content */
+#content {
+	z-index: 10;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	left: 0;
+	background: #fff;
+	box-shadow: 0 -5pt 10pt 0 rgba(0,0,0,.5);
+}
+#content.start {
+	top: 200%;
+}
+@-webkit-keyframes contentstart {
+	50% {
+		top: 96%;
+	}
+	100% {
+		top: 100%;
+	}
 }
