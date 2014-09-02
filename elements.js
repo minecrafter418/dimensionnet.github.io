@@ -10,8 +10,14 @@ $(document).ready(function(){
 	}).done(function(data){
 		$("body").prepend(data);
 		$( "tab#" + $("body").attr("id") ).addClass("selected");
-		$("#load").css("width", $(window).width() * ( $(window).width() / $(window).height() ) )
-		.css("height", $(window).width() * ( $(window).width() / $(window).height() ) )
+		var biggerSize = $(window).width();
+		var smallerSize = $(window).height();
+		if( $(window).height() > $(window).width() ) {
+			biggerSize = smallerSize;
+			smallerSize = $(window).width();
+		}
+		$("#load").css("width", biggerSize * 3 )
+		.css("height", biggerSize * 3 )
 		.css("top","50%").css("left","50%");
 	});
 	
@@ -33,8 +39,14 @@ $(document).ready(function(){
 		.css("left", e.pageX)
 		.css("transition", "all 1s cubic-bezier(.2,.3,0,1)");
 		setTimeout(function(){
-			$("#teleport").css("width", $(window).width() * ( $(window).width() / $(window).height() ) )
-			.css("height", $(window).width() * ( $(window).width() / $(window).height() ) );
+			var biggerSize = $(window).width();
+			var smallerSize = $(window).height();
+			if( $(window).height() > $(window).width() ) {
+				biggerSize = smallerSize;
+				smallerSize = $(window).width();
+			}
+			$("#teleport").css("width", biggerSize * 3 )
+			.css("height", biggerSize * 3 );
 			setTimeout(function(){
 				window.location = href;
 			},1000);
@@ -49,8 +61,14 @@ $(document).ready(function(){
 			.css("left", e.pageX)
 			.css("transition", "all 1s cubic-bezier(.2,.3,0,1)");
 			setTimeout(function(){
-				$("#teleport").css("width", $(window).width() * ( $(window).width() / $(window).height() ) )
-				.css("height", $(window).width() * ( $(window).width() / $(window).height() ) );
+				var biggerSize = $(window).width();
+				var smallerSize = $(window).height();
+				if( $(window).height() > $(window).width() ) {
+					biggerSize = smallerSize;
+					smallerSize = $(window).width();
+				}
+				$("#teleport").css("width", biggerSize * 3 )
+				.css("height", biggerSize * 3 );
 				setTimeout(function(){
 					window.location = href;
 				},1000);
