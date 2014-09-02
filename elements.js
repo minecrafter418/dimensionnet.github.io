@@ -1,71 +1,84 @@
 
 $(document).ready(function(){
-
-	$("head").append("<link rel='stylesheet' href='/default.css'>");
-
-	var originalbody = $("body").html();
-	$("body").empty();
-
+	
+	$("head").append("<link rel='stylesheet' type='text/css' href='/default.css'>");
+	
 	$.ajax({
-		url: '/header.html',
+		url: '/files/header.html',
 		type: 'get',
-		async: 'false'
+		async: false
+	}).done(function(data){
+		$("body").prepend(data);
+		$( "tab#" + $("body").attr("id") ).addClass("selected");
+		$("#load").css("width", $(window).width() * ( $(window).width() / $(window).height() ) )
+		.css("height", $(window).width() * ( $(window).width() / $(window).height() ) )
+		.css("top","50%").css("left","50%");
+	});
+	
+	$.ajax({
+		url: '/files/footer.html',
+		type: 'get',
+		async: false
 	}).done(function(data){
 		$("body").append(data);
-		$("body").append("<div id='content' class='start'>" + originalbody + "</div>");
-		$.ajax({
-			url: '/footer.html',
-			type: 'get',
-			async: 'false'
-		}).done(function(data){
-			$("body").append(data);
-		});
+		positionElements();
 	});
-
-
-
+	
+	
+	$("a").click(function(e){
+		e.preventDefault();
+		var href = $(this).attr("href");
+		$("body").prepend("<div id='teleport'></div>");
+		$("#teleport").css("top", e.pageY)
+		.css("left", e.pageX)
+		.css("transition", "all 1s cubic-bezier(.2,.3,0,1)");
+		setTimeout(function(){
+			$("#teleport").css("width", $(window).width() * ( $(window).width() / $(window).height() ) )
+			.css("height", $(window).width() * ( $(window).width() / $(window).height() ) );
+			setTimeout(function(){
+				window.location = href;
+			},1000);
+		},10);
+	});
+	
+	$("#header #tabs tab").click(function(e){
+		if( $(this).attr("href") ) {
+			var href = $(this).attr("href");
+			$("body").prepend("<div id='teleport'></div>");
+			$("#teleport").css("top", e.pageY)
+			.css("left", e.pageX)
+			.css("transition", "all 1s cubic-bezier(.2,.3,0,1)");
+			setTimeout(function(){
+				$("#teleport").css("width", $(window).width() * ( $(window).width() / $(window).height() ) )
+				.css("height", $(window).width() * ( $(window).width() / $(window).height() ) );
+				setTimeout(function(){
+					window.location = href;
+				},1000);
+			},10);
+			
+		} else if( $(this).attr("group") ){
+			if( $("#header #tabs drop[group=" + $(this).attr("group") + "]").hasClass("visible") ) {
+				$("#header #tabs drop[group=" + $(this).attr("group") + "]").removeClass("visible");
+			} else {
+				$("#header #tabs drop[group=" + $(this).attr("group") + "]").addClass("visible");	
+			}
+		}
+	});
+	
 });
+
+function positionElements() {
+	
+	if( $("body").height() > $(window).height() ){
+		$("#footer").removeClass("fixed");
+	} else {
+		$("#footer").addClass("fixed");
+	}
+	
+}
 
 $(window).load(function(){
-	setTimeout(function(){
-		$("header").css("animation","headerstart 1s cubic-bezier(.2,.3,0,1)");
-		$("#logo").css("height","100pt");
-		$("#logo").css("top","60pt");
-		var currentScrollTop = $(window).scrollTop();
-		$(window).scrollTop(0);
-		$(window).scroll();
-		setTimeout(function(){
-			$("#background").css("animation","bgstart .8s cubic-bezier(.2,.3,0,1)");
-			$("header").removeClass("start");
-			setTimeout(function(){
-				$("#content").css("animation","contentstart 2s cubic-bezier(.2,.3,0,1)");
-				setTimeout(function(){
-					$("#content").removeClass("start");
-					setTimeout(function(){
-						$(window).scroll();
-						setTimeout(function(){
-							$('html, body').animate({
-								scrollTop: currentScrollTop,
-								easing: 'easeOutExpo'
-							},1000);
-						},100);
-					},500);
-				},100);
-			},100);
-		},100);
-	},1000);
+	positionElements();
+	$("*").addClass("animated");
+	$("#load").css("width",0).css("height",0);
 });
-
-$(window).scroll(function(){
-	if( $("#content").offset().top - $(window).scrollTop() < 200 ) {
-		$("#background").addClass("bar");
-		$("#background").css("top", - ($("#content").offset().top / 2 -  100));
-		$("#background").css("clip","rect(0px,10000px," + ($("#content").offset().top / 2 + 100 ) + "px,0px)");
-	} else {
-		$("#background").removeClass("bar");
-		$("#background").css("top", -($(window).scrollTop() / 2) );
-		$("#background").css("clip","");
-	}
-});
-
-$(window).resize($(window).scroll());
