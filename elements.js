@@ -78,7 +78,10 @@ $(document).ready(function(){
 			if( $("#header #tabs drop[group=" + $(this).attr("group") + "]").hasClass("visible") ) {
 				$("#header #tabs drop[group=" + $(this).attr("group") + "]").removeClass("visible");
 			} else {
-				$("#header #tabs drop[group=" + $(this).attr("group") + "]").addClass("visible");	
+				$("#header #tabs drop[group=" + $(this).attr("group") + "]").addClass("visible");
+				var htdg = $("#header #tabs drop[group=" + $(this).attr("group") + "]");
+				$(htdg).css("top", $(this).offset().top + $(this).outerHeight())
+				.css("left", $(this).offset().left);
 			}
 		}
 	});
