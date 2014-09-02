@@ -1,0 +1,32 @@
+
+staff {
+	background: #555;
+	padding: 10px;
+	display: list-item;
+	list-style-type: none;
+	color: #fff;
+	text-align: center;
+}
+staff .name {
+	font-size: 1.2em;
+	display: block;
+	text-align: center;
+}
+staff .description {
+	padding: 0 20px;
+}
+staff.owner {
+	background: #e11f1f;
+}
+staff.admin {
+	background: #f22f2f;
+}
+staff.moderator {
+	background: #aa39ba;
+}
+staff.trialmod {
+	background: #b54ba1;
+}
+staff.developer {
+	background: #ffc355;
+}

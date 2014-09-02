@@ -43,6 +43,10 @@ a:focus::before {
 	height: 2px;
 }
 
+.title {
+	font-size: 1.3em;
+}
+
 #load {
 	background: #9c27b0;
 	width: 100%;
@@ -59,8 +63,10 @@ a:focus::before {
 	text-align: center;
 	padding: 20px;
 	font-size: 1.2em;
+	z-index: 100;
 	-webkit-user-select: none;
 	user-select: none;
+	box-shadow: 0 3px 12px 0 rgba(0,0,0,.3);
 }
 #header #title {
 	font-size: 2em;
@@ -132,6 +138,7 @@ a:focus::before {
 	padding: 20px 0;
 	-webkit-user-select: none;
 	user-select: none;
+	box-shadow: 0 -3px 12px 0 rgba(0,0,0,.3);
 }
 #footer.fixed {
 	position: fixed;

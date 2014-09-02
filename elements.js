@@ -3,6 +3,9 @@ $(document).ready(function(){
 	
 	$("head").append("<link rel='stylesheet' type='text/css' href='/default.css'>");
 	
+	var originalbody = $("body").html();
+	$("body").empty();
+	
 	$.ajax({
 		url: '/files/header.html',
 		type: 'get',
@@ -20,6 +23,8 @@ $(document).ready(function(){
 		.css("height", biggerSize * 3 )
 		.css("top","50%").css("left","50%");
 	});
+	
+	$("body").append("<div id='content'>" + originalbody + "</div>");
 	
 	$.ajax({
 		url: '/files/footer.html',
@@ -86,6 +91,12 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("div, body, html").click(function(e){
+		if( e.target == this) {
+			$("#header #tabs drop").removeClass("visible");
+		}
+	});
+	
 });
 
 function positionElements() {
@@ -97,6 +108,9 @@ function positionElements() {
 	}
 	
 }
+
+$(window).resize(positionElements);
+$(window).scroll(positionElements);
 
 $(window).load(function(){
 	positionElements();
