@@ -1,0 +1,10 @@
+
+#rules {
+	list-style-type: decimal;
+}
+#rules li {
+	padding: 10px 0;
+}
+#rules a {
+	color: #000;
+}
