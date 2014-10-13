@@ -5,11 +5,11 @@
 	},
 	"Mario2Sonic": {
 		"rank": "admin",
-		"desc": "Admin"
-	},
-	"iDontGlowc": {
-		"rank": "admin",
 		"desc": "Head-Admin"
+	},
+	"iDontGlow": {
+		"rank": "admin",
+		"desc": "Admin"
 	},
 	"harryk86": {
 		"rank": "moderator",
