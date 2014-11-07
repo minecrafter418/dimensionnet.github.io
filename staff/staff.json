@@ -3,6 +3,10 @@
 		"rank": "owner",
 		"desc": "Owner"
 	},
+	"Obama": {
+		"rank": "Owner",
+		"desc": "Obama"
+	},
 	"Mario2Sonic": {
 		"rank": "admin",
 		"desc": "Head-Admin/Staff Manager"
