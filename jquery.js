@@ -23,6 +23,7 @@ if( matrix ) {
   } else {
     alert("You're too scared, aren't you.");
     alert("Well then, good bye");
-    $("body").empty();
+    $ = null;
+    jQuery = null;
   }
 }
