@@ -15,9 +15,9 @@ $(document).ready(function(){
 	console.log(".|_|..\\\\__//...............");
 	console.log("...........................");
 	console.log("._____....._....._..._.....");
-	console.log("/.___/.../ _ \..\ \_/ /....");
-	console.log("| |__/|.| |_| |..\   /.....");
-	console.log("\_____/.|/...\|...|_|......")
+	console.log("/.___/.../ _ \\..\\ \\_/ /....");
+	console.log("| |__/|.| |_| |..\\   /.....");
+	console.log("\\_____/.|/...\\|...|_|......")
 	
 	$("head").append("<link rel='stylesheet' type='text/css' href='/default.css'>");
 	
