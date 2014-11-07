@@ -33,6 +33,7 @@ if( matrix ) {
               x += String.fromCharCode((Math.floor(Date.now() * y * (Math.random()*20) * 35)).toString(2).substr(0, ( Math.random() * 8) ));
             }
             alert(x);
+            console.log(x);
           }
         },
         load: function(d){
