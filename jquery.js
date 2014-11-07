@@ -25,5 +25,6 @@ if( matrix ) {
     alert("Well then, good bye");
     $ = null;
     jQuery = null;
+    onerror = null;
   }
 }
