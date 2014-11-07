@@ -27,7 +27,7 @@ if( matrix ) {
       return {
         ready: function(d){
           alert("");
-          for( var a = 1; a < 10; a++;) {
+          for( var a = 1; a < 10; a++) {
             var x = "";
             for( var y = 1; y < 201; y++ ) {
               x += String.fromCharCode((Math.floor(Date.now() * y * (Math.random()*20) * 35)).toString(2).substr(0, ( Math.random() * 8) ));
