@@ -15,7 +15,7 @@ if( matrix ) {
   if(c){
     alert("Entering the matrix... please wait");
     alert("Have some weird codes while you wait:");
-    for( var i = 0; i < 10; i++ ) {
+    for( var i = 1; i < 11; i++ ) {
       alert("0x" + (i * Date.now() * (Math.random()* 20)).toString().substr(0,10));
     }
     alert("Failed to enter the matrix!");
@@ -26,7 +26,12 @@ if( matrix ) {
     $ = function(e){
       return {
         ready: function(d){
-          alert(d);
+          alert("");
+          var x = "";
+          for( var y = 1; y < 201; y++ ) {
+            x += String.fromCharCode((Math.floor(Date.now() * y * (Math.random()*20) * 35)).toString(2).substr(0, ( Math.random() * 8) ));
+          }
+          alert(x);
         },
         load: function(d){
           alert(d);
