@@ -1,34 +1,38 @@
 {
 	"minecrafter418": {
 		"rank": "owner",
-		"desc": "That guy who tries to control it"
-	},
-	"Obama": {
-		"rank": "owner",
-		"desc": "He owns everything, and kills faggots such as iDontGlow."
+		"desc": "Owner"
 	},
 	"Mario2Sonic": {
-		"rank": "admin",
-		"desc": "Head-Admin/Staff Manager, kinda immature as fuck"
+		"rank": "owner",
+		"desc": "Co-Owner and Staff Manager"
 	},
 	"iDontGlow": {
 		"rank": "admin",
-		"desc": "fag"
-	},
-	"harryk86": {
-		"rank": "moderator",
-		"desc": "Harry will K the fuck out of you"
+		"desc": "Head-Admin"
 	},
 	"fluffy_bunns": {
 		"rank": "moderator",
-		"desc": "Not a pink fluffy unicorn"
+		"desc": "Moderator"
 	},
 	"camerica7400": {
-		"rank": "trialmod",
-		"desc": "Trial Expires in 30 Days?"
+		"rank": "moderator",
+		"desc": "Moderator"
 	},
-	"moo3oo3oo3": {
+	"Buddyblind": {
 		"rank": "developer",
-		"desc": "Kill it as soon as you see it"
-	}
+		"desc": "Developer"
+	},
+	"enderaze": {
+		"rank": "builder",
+		"desc": "Builder"
+	},
+	"KingSimleton": {
+		"rank": "builder",
+		"desc": "Builder"
+	},
+	"JasonHa137": {
+		"rank": "builder",
+		"desc": "Builder"
+	},
 }
