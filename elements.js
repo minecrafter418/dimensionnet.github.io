@@ -1,23 +1,23 @@
 
 $(document).ready(function(){
 	
-	console.log("Congratulations! You discovered the console.");
-	console.log("Have a secret message:")
-	console.log("._____....____... __..._..");
-	console.log("|_   _|..| ___\\..|   \\| |.");
-	console.log("..| |....| |_| |.| |\\ \\ |.");
-	console.log("..|_|....|____/..|_| \\__|.");
-	console.log("...........................");
-	console.log(".._.....____...............");
-	console.log(".| |..//___/...............");
-	console.log(".| |..\\\\___................");
-	console.log(".| |....--\\\\...............");
-	console.log(".|_|..\\\\__//...............");
-	console.log("...........................");
-	console.log("._____....._....._..._.....");
-	console.log("/.___/.../ _ \\..\\ \\_/ /....");
-	console.log("| |__/|.| |_| |..\\   /.....");
-	console.log("\\_____/.|/...\\|...|_|......")
+//	console.log("Congratulations! You discovered the console.");
+//	console.log("Have a secret message:")
+//	console.log("._____....____... __..._..");
+//	console.log("|_   _|..| ___\\..|   \\| |.");
+//	console.log("..| |....| |_| |.| |\\ \\ |.");
+//	console.log("..|_|....|____/..|_| \\__|.");
+//	console.log("...........................");
+//	console.log(".._.....____...............");
+//	console.log(".| |..//___/...............");
+//	console.log(".| |..\\\\___................");
+//	console.log(".| |....--\\\\...............");
+//	console.log(".|_|..\\\\__//...............");
+//	console.log("...........................");
+//	console.log("._____....._....._..._.....");
+//	console.log("/.___/.../ _ \\..\\ \\_/ /....");
+//	console.log("| |__/|.| |_| |..\\   /.....");
+//	console.log("\\_____/.|/...\\|...|_|......")
 	
 	$("head").append("<link rel='stylesheet' type='text/css' href='/default.css'>");
 	
