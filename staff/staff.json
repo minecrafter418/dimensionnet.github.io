@@ -3,17 +3,9 @@
 		"rank": "owner",
 		"desc": "Owner"
 	},
-	"Mario2Sonic": {
-		"rank": "owner",
-		"desc": "Co-Owner and Staff Manager"
-	},
-	"iDontGlow": {
+	"JasonHa137": {
 		"rank": "admin",
-		"desc": "Head-Admin"
-	},
-	"fluffy_bunns": {
-		"rank": "moderator",
-		"desc": "Moderator"
+		"desc": "Admin"
 	},
 	"camerica7400": {
 		"rank": "moderator",
@@ -28,10 +20,6 @@
 		"desc": "Builder"
 	},
 	"KingSimpleton": {
-		"rank": "builder",
-		"desc": "Builder"
-	},
-	"JasonHa137": {
 		"rank": "builder",
 		"desc": "Builder"
 	}
