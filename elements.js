@@ -50,7 +50,7 @@ $(document).ready(function(){
 		loadedHeader = true;
 		checkLd();
 	}).fail(function(){
-		$("body").prepend("<div id='err'>Failed to load header</div>");
+		$("body").prepend("<header id='err'>Failed to load header</header>");
 		loadedHeader = true;
 		checkLd();
 	});
@@ -63,7 +63,7 @@ $(document).ready(function(){
 		loadedFooter = true;
 		checkLd();
 	}).fail(function(){
-		$("body").append("<div id='err'>Failed to load footer<br>Still &copy; Creeper32605 though</div>");
+		$("body").append("<footer id='err'>Failed to load footer<br>Still &copy; Creeper32605 though</footer>");
 		loadedFooter = true;
 		checkLd();
 	});
