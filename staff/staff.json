@@ -22,5 +22,10 @@
 	"KingSimpleton": {
 		"rank": "builder",
 		"desc": "Builder"
+	},
+	"imjustyn": {
+		"rank": "trialmod",
+		"desc": "Trial Mod"
 	}
+        
 }
