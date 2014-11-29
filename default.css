@@ -49,8 +49,11 @@ content {
 	top: 56px;
 	left: 0;
 	right: 0;
-	bottom: 56px;
-	overflow: auto;
+	bottom: 0;
+	padding: 8px;
+	padding-bottom: 60px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 a {
@@ -97,6 +100,11 @@ a:hover::before {
 	transform: translate(-50%,-50%) rotate(45deg) scale(1);
 }
 
+span.title {
+	display: block;
+	font-size: 1.2em;
+}
+
 /* header */
 
 header {
@@ -110,6 +118,7 @@ header {
 	box-sizing: border-box;
 	-webkit-animation: headerin 1s;
 	animation: headerin 1s;
+	z-index: 250;
 }
 @-webkit-keyframes headerin {
 	0% {
@@ -165,6 +174,7 @@ footer {
 	color: rgba(255,255,255,.5);
 	-webkit-animation: footerin 1s;
 	animation: footerin 1s;
+	z-index: 200;
 }
 @-webkit-keyframes footerin {
 	0% {

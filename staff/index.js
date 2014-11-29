@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	
 	$.ajax({
@@ -13,10 +14,10 @@ $(document).ready(function(){
 				"<span class='description'>" + data[i].desc + "</span>" +
 				"</staff>";
 		}
-		$("#content #staff").append(output);
+		$("content #staff").append(output);
 		
 	}).fail(function(){
-		$("#staff").append("Error loading ajax");
+		$("content #staff").append("Error loading ajax");
 	});
 	
 });

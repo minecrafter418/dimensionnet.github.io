@@ -6,6 +6,7 @@ staff {
 	list-style-type: none;
 	color: #fff;
 	text-align: center;
+	display: block;
 }
 staff .name {
 	font-size: 1.2em;
@@ -31,5 +32,5 @@ staff.developer {
 	background: #ffc355;
 }
 staff.builder {
-	background: #2E64FE;
+	background: #2e64fe;
 }
