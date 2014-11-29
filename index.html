@@ -5,6 +5,15 @@
 		<script src='/jquery.js'></script>
 	</head>
 	<body>
-		
+		<script>
+			function tpbtn () {
+				var d = new teleport();
+				d.start();
+				setTimeout(function(){
+					d.stop();
+				},5000);
+			}
+		</script>
+		<button onclick='tpbtn()'>new teleport (stop after 5s)</button>
 	</body>
 </html>

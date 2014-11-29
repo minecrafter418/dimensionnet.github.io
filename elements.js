@@ -11,6 +11,10 @@ $(document).ready(function(){
 	$("head").append("<link rel='stylesheet' href='/default.css' type='text/css'>");
 	$("head").append("<script src='/snapsvg.js' type='text/javascript'></script>");
 
+	var ob = $("body").html();
+	$("body").empty();
+	$("body").append("<content>" + ob + "</content>");
+
 	var loadedHeader = false;
 	var loadedFooter = false;
 	function checkLd() {

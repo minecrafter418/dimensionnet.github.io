@@ -42,6 +42,17 @@ svg#teleport * {
 	pointer-events: all;
 }
 
+/* content */
+
+content {
+	position: absolute;
+	top: 56px;
+	left: 0;
+	right: 0;
+	bottom: 56px;
+	overflow: auto;
+}
+
 
 /* header */
 
