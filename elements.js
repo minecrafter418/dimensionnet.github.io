@@ -30,11 +30,12 @@ $(document).ready(function(){
 				var t = new teleport(e.pageX, e.pageY,function(){
 				});
 				t.start();
+				var d = this;
 				setTimeout(function(){
 					$("body>*:not(#teleport)").remove();
 					t.stop();
 					setTimeout(function(){
-						document.location = $(this).attr("href") || "/";
+						document.location = $(d).attr("href") || "/";
 					},1000);
 				},500);
 			});
