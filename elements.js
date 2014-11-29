@@ -1,137 +1,153 @@
 
+//do not load this script if you have jquery.js!
+//it will be loaded automatically. You can disable
+//that by doing <html nej>
+
+var canAddV = false;
+var isLoaded = false;
 $(document).ready(function(){
-	
-//	console.log("Congratulations! You discovered the console.");
-//	console.log("Have a secret message:")
-//	console.log("._____....____... __..._..");
-//	console.log("|_   _|..| ___\\..|   \\| |.");
-//	console.log("..| |....| |_| |.| |\\ \\ |.");
-//	console.log("..|_|....|____/..|_| \\__|.");
-//	console.log("...........................");
-//	console.log(".._.....____...............");
-//	console.log(".| |..//___/...............");
-//	console.log(".| |..\\\\___................");
-//	console.log(".| |....--\\\\...............");
-//	console.log(".|_|..\\\\__//...............");
-//	console.log("...........................");
-//	console.log("._____....._....._..._.....");
-//	console.log("/.___/.../ _ \\..\\ \\_/ /....");
-//	console.log("| |__/|.| |_| |..\\   /.....");
-//	console.log("\\_____/.|/...\\|...|_|......")
-	
-	$("head").append("<link rel='stylesheet' type='text/css' href='/default.css'>");
-	
-	var originalbody = $("body").html();
-	$("body").empty();
-	
+
+	//resources that should be present on every page
+	$("head").append("<link rel='stylesheet' href='/default.css' type='text/css'>");
+	$("head").append("<script src='/snapsvg.js' type='text/javascript'></script>");
+
+	var loadedHeader = false;
+	var loadedFooter = false;
+	function checkLd() {
+		if( loadedHeader && loadedFooter ) {
+			canAddV = true;
+			if( isLoaded ) {
+				$("body").addClass("vsb");
+			}
+			
+			//event handlers
+			$("tabgroup tab").click(function(e){
+				var t = new teleport(e.pageX, e.pageY,function(){
+				});
+				t.start();
+				setTimeout(function(){
+					$("body>*:not(#teleport)").remove();
+					t.stop();
+					setTimeout(function(){
+						document.location = $(this).attr("href") || "/";
+					},1000);
+				},500);
+			});
+		}
+	}
+
 	$.ajax({
-		url: '/files/header.html',
-		type: 'get',
-		async: false
+		url: "/default/header.html",
+		async: true
 	}).done(function(data){
 		$("body").prepend(data);
-		$( "tab#" + $("body").attr("id") ).addClass("selected");
-		var biggerSize = $(window).width();
-		var smallerSize = $(window).height();
-		if( $(window).height() > $(window).width() ) {
-			biggerSize = smallerSize;
-			smallerSize = $(window).width();
-		}
-		$("#load").css("width", biggerSize * 3 )
-		.css("height", biggerSize * 3 )
-		.css("top","50%").css("left","50%");
+		loadedHeader = true;
+		checkLd();
+	}).fail(function(){
+		$("body").prepend("<div id='err'>Failed to load header</div>");
+		loadedHeader = true;
+		checkLd();
 	});
-	
-	$("body").append("<div id='content'>" + originalbody + "</div>");
-	
+
 	$.ajax({
-		url: '/files/footer.html',
-		type: 'get',
-		async: false
+		url: "/default/footer.html",
+		async: true
 	}).done(function(data){
 		$("body").append(data);
-		positionElements();
-	});
-	
-	
-	$("a").click(function(e){
-		e.preventDefault();
-		var href = $(this).attr("href");
-		$("body").prepend("<div id='teleport'></div>");
-		$("#teleport").css("top", e.pageY)
-		.css("left", e.pageX)
-		.css("transition", "all 1s cubic-bezier(.2,.3,0,1)");
-		setTimeout(function(){
-			var biggerSize = $(window).width();
-			var smallerSize = $(window).height();
-			if( $(window).height() > $(window).width() ) {
-				biggerSize = smallerSize;
-				smallerSize = $(window).width();
-			}
-			$("#teleport").css("width", biggerSize * 3 )
-			.css("height", biggerSize * 3 );
-			setTimeout(function(){
-				window.location = href;
-			},1000);
-		},10);
-	});
-	
-	$("#header #tabs tab").click(function(e){
-		if( $(this).attr("href") ) {
-			var href = $(this).attr("href");
-			$("body").prepend("<div id='teleport'></div>");
-			$("#teleport").css("top", e.pageY)
-			.css("left", e.pageX)
-			.css("transition", "all 1s cubic-bezier(.2,.3,0,1)");
-			setTimeout(function(){
-				var biggerSize = $(window).width();
-				var smallerSize = $(window).height();
-				if( $(window).height() > $(window).width() ) {
-					biggerSize = smallerSize;
-					smallerSize = $(window).width();
-				}
-				$("#teleport").css("width", biggerSize * 3 )
-				.css("height", biggerSize * 3 );
-				setTimeout(function(){
-					window.location = href;
-				},1000);
-			},10);
-			
-		} else if( $(this).attr("group") ){
-			if( $("#header #tabs drop[group=" + $(this).attr("group") + "]").hasClass("visible") ) {
-				$("#header #tabs drop[group=" + $(this).attr("group") + "]").removeClass("visible");
-			} else {
-				$("#header #tabs drop[group=" + $(this).attr("group") + "]").addClass("visible");
-				var htdg = $("#header #tabs drop[group=" + $(this).attr("group") + "]");
-				$(htdg).css("top", $(this).offset().top + $(this).outerHeight())
-				.css("left", $(this).offset().left);
-			}
-		}
-	});
-	
-	$("div, body, html").click(function(e){
-		if( e.target == this) {
-			$("#header #tabs drop").removeClass("visible");
-		}
+		loadedFooter = true;
+		checkLd();
+	}).fail(function(){
+		$("body").append("<div id='err'>Failed to load footer<br>Still &copy; Creeper32605 though</div>");
+		loadedFooter = true;
+		checkLd();
 	});
 	
 });
-
-function positionElements() {
-	
-	if( $("body").height() > $(window).height() ){
-		$("#footer").removeClass("fixed");
-	} else {
-		$("#footer").addClass("fixed");
-	}
-	
-}
-
-$(window).resize(positionElements);
-$(window).scroll(positionElements);
 
 $(window).load(function(){
-	positionElements();
-	$("*").addClass("animated");
-	$("#load").css("width",0).css("height",0);
+	isLoaded = true;
+	if( canAddV ) {
+		$("body").addClass("vsb");
+	}
 });
+
+var teleport = function ( x, y, callback ) {
+
+	x = x || $(window).width() / 2;
+	y = y || $(window).height() / 2;
+
+	$("body").append("<svg id='teleport'></svg>");
+
+	var t = Snap("svg#teleport");
+
+	//put a fancier animation here but this one should do for now
+	//#9c27b0
+	var bgc = t.circle(x,y, 0).attr({
+		fill: '#280A2E'
+	});
+
+	var blob = function(x,y) {
+		this.randomRotation = Math.floor(Math.random() * 360);
+		this.randomDestination = Math.floor(Math.random() * $(window).width());
+		this.style1 = '-webkit-transform-origin: ' + x + ' ' + y +
+				';-webkit-transform: rotate(' + this.randomRotation +
+				'deg);transform-origin: ' + x + ' ' + y +
+				';transform: rotate(' + this.randomRotation + 'deg);';
+		this.style2 = '-webkit-transform-origin: ' + x + ' ' + y +
+				';-webkit-transform: rotate(' + this.randomRotation +
+				'deg) translateX(' + this.randomDestination +
+				'px);transform-origin: ' + x + ' ' + y +
+				';transform: rotate(' + this.randomRotation +
+				'deg) translateX(' + this.randomDestination + 'px);';
+		this.node = t.circle(x,y, 0).attr({
+			fill: '#9c27b0',
+			style: this.style1
+		});
+		var b = this;
+		setTimeout(function(){
+			b.node.attr({
+				style: b.style2
+			});
+			b.node.animate({
+				r: 25
+			} ,250, null, function(){
+				b.node.animate({
+					r: 0
+				},250);
+			});
+		},20);
+	};
+
+	var blobs = [];
+	var cb = false;
+	function createblobs(){
+		for( var a = 0; a < 10; a++ ) {
+			new blob( $(window).width() / 2, $(window).height() / 2);
+		}
+		if( cb )
+			setTimeout(createblobs, 100);
+	}
+
+	this.start = function(){
+		bgc.animate({
+			//yeah skrubs I learnt how to Pythagorean Theorem - a^2 = b^2 + c^2
+			r: Math.sqrt( Math.pow( $(window).width(), 2) + Math.pow( $(window).height(), 2))
+		},100);
+		cb = true;
+		createblobs();
+	};
+	this.stop = function() {
+		bgc.animate({
+			r: 0
+		},250,null,function(){
+			cb = false;
+			if( typeof(callback) == "function" ) {
+				try {
+					callback();
+				} catch(err) {
+					throw err;
+				}
+			}
+		});
+	};
+};
