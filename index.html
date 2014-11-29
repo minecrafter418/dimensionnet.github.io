@@ -3,17 +3,9 @@
 	<head>
 		
 		<script src='/jquery.js'></script>
+		<script src='index.js'></script>
 	</head>
 	<body>
-		<script>
-			function tpbtn () {
-				var d = new teleport();
-				d.start();
-				setTimeout(function(){
-					d.stop();
-				},5000);
-			}
-		</script>
-		<button onclick='tpbtn()'>new teleport (stop after 5s)</button>
+		<svg id='tdn-logo'></svg>
 	</body>
 </html>
