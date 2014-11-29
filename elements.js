@@ -10,7 +10,7 @@ $(document).ready(function(){
 	//resources that should be present on every page
 	$("head").append("<link rel='stylesheet' href='/default.css' type='text/css'>");
 	$("head").append("<script src='/snapsvg.js' type='text/javascript'></script>");
-	$("head").append("<meta name='viewport' content='initial-scale=1, maximum-scale=1'>")
+	$("head").append("<meta name='viewport' content='initial-scale=1, maximum-scale=1'>");
 
 	var ob = $("body").html();
 	$("body").empty();
