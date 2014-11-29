@@ -8,6 +8,14 @@ staff {
 	text-align: center;
 	display: block;
 }
+staff:first-child {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+staff:last-child {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
 staff .name {
 	font-size: 1.2em;
 	display: block;
