@@ -100,9 +100,10 @@ a:hover::before {
 	transform: translate(-50%,-50%) rotate(45deg) scale(1);
 }
 
-span.title {
+.title {
 	display: block;
-	font-size: 1.2em;
+	font-size: 2em;
+	text-align: center;
 }
 
 /* header */
@@ -157,6 +158,81 @@ header #ptabs {
 	right: 4px;
 	bottom: 12px;
 }
+header hamburger {
+	position: absolute;
+	pointer-events: none;
+	opacity: 0;
+	top: 0;
+	right: 0;
+	margin: 4px;
+	width: 48px;
+	height: 48px;
+}
+header hamburger #l1,
+header hamburger #l2,
+header hamburger #l3 {
+	background: #fff;
+	width: 18px;
+	height: 2px;
+	position: absolute;
+	left: 15px;
+}
+header hamburger #l1 {
+	top: 19px;
+}
+header hamburger #l2 {
+	top: 24px;
+}
+header hamburger #l3 {
+	top: 29px;
+}
+
+@media (max-width: 900px) {
+	header.open {
+		height: 90%;
+	}
+	header #ptitle {
+		font-size: 15px;
+		bottom: 18px;
+	}
+	header.open #ptitle {
+		opacity: 0;
+		pointer-events: none;
+	}
+	header #ptabs {
+		pointer-events: none;
+		opacity: 0;
+		left: 56px;
+		right: 56px;
+	}
+	header hamburger {
+		opacity: 1;
+		pointer-events: all;
+		cursor: pointer;
+	}
+	header.open hamburger #l1 {
+		top: 15px;
+	}
+	header.open hamburger #l3 {
+		top: 33px;
+	}
+	
+	header.open #ptabs {
+		pointer-events: all;
+		opacity: 1;
+	}
+	header #ptabs tab {
+		display: list-item;
+		list-style-type: none;
+		padding: 10px;
+	}
+	header #ptabs tab::before {
+		display: none!important;
+	}
+	header #ptabs tab::after {
+		display: none!important;
+	}
+}
 
 /* footer */
 
@@ -202,7 +278,45 @@ tabgroup tab {
 	-moz-user-select: none;
 	-o-user-select: none;
 	user-select: none;
+	position: relative;
+	border-bottom: 1px solid transparent;
 }
-tabgroup tab:active {
+tabgroup tab:hover {
 	border-bottom: 1px solid #fff;
+}
+tabgroup tab[external]::after {
+	content: attr(href);
+	position: absolute;
+	top: 50%;
+	color: #fff;
+	pointer-events: none;
+	right: 0;
+	-webkit-transform-origin: 100% 0;
+	transform-origin: 100% 0;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	background: #9c27b0;
+	padding: 10px;
+}
+tabgroup tab[external]::before {
+	content: '';
+	position: absolute;
+	background: #9c27b0;
+	top: 50%;
+	left: 50%;
+	width: 10px;
+	height: 10px;
+	z-index: -1;
+	-webkit-transform: translate(-50%,-50%) rotate(45deg) scale(0);
+	transform: translate(-50%,-50%) rotate(45deg) scale(0);
+	pointer-events: none;
+}
+tabgroup tab[external]:hover::after {
+	top: 100%;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+tabgroup tab[external]:hover::before {
+	-webkit-transform: translate(-50%,50%) rotate(45deg) scale(1);
+	transform: translate(-50%,50%) rotate(45deg) scale(1);
 }

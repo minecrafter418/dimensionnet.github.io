@@ -48,6 +48,12 @@ $(document).ready(function(){
 			
 			//event handlers
 			$("tabgroup tab").click(function(e){
+				
+				if( e.button == 1 ) {
+					var win = window.open( $(this).attr("href"), '_blank');
+					win.focus();
+					return;
+				}
 				var t = new teleport(e.pageX, e.pageY,function(){
 				});
 				t.start();
@@ -59,6 +65,9 @@ $(document).ready(function(){
 						document.location = $(d).attr("href") || "/";
 					},1000);
 				},500);
+			});
+			$("header hamburger").click(function(){
+				$("header").toggleClass("open");
 			});
 		}
 	}
