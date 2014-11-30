@@ -19,6 +19,11 @@
 	border-radius: 4px;
 }
 
+.noanim {
+	transition: all 0s;
+	-webkit-transition: all 0s;
+}
+
 body {
 	background: #eee;
 	font-family: 'Montserrat', sans-serif;
@@ -211,9 +216,9 @@ header hamburger #l3 {
 		opacity: 0;
 		right: 56px;
 		bottom: 0;
-		overflow-x: hidden;
-		max-height: 90%;
-		overflow-y: auto;
+		/*overflow-x: hidden;*/
+		/*max-height: 90%;*/
+		/*overflow-y: auto;*/
 		left: 56px;
 	}
 	header hamburger {
@@ -258,6 +263,10 @@ header hamburger #l3 {
 	}
 	header #ptabs tab::after {
 		display: none!important;
+	}
+
+	header.noanim * {
+		pointer-events: none;
 	}
 }
 
