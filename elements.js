@@ -34,10 +34,13 @@ $(document).ready(function(){
 		"<meta name='msapplication-config' content='/favicons/browserconfig.xml'>" +
 		"<meta name='application-name' content='TDN'>");
 
+	$("body").prepend("<!--[if IE]><script>killthisexploderthing()</script><![endif]-->");
+
 	var ob = $("body").html();
 	$("body").empty();
-	$("body").append("<content>" + ob + "</content>");
 
+	
+	$("body").append("<content>" + ob + "</content>");
 	if( !$("head title").length ) {
 		$("head").append("<title>TDN</title>");
 	}
@@ -45,7 +48,7 @@ $(document).ready(function(){
 	var loadedHeader = false;
 	var loadedFooter = false;
 
-	tpload = new teleport(null, null, null, true);
+	tpload = new teleport(true);
 	tpload.start();
 	function checkLd() {
 		if( loadedHeader && loadedFooter ) {
@@ -62,9 +65,9 @@ $(document).ready(function(){
 					win.focus();
 					return;
 				}
-				var t = new teleport(e.pageX, e.pageY,function(){
+				var t = new teleport(function(){
 				});
-				t.start(true);
+				t.start(e.pageX, e.pageY, true);
 				var d = this;
 				setTimeout(function(){
 					$("body>*:not(#teleport)").remove();
@@ -115,10 +118,8 @@ $(window).load(function(){
 	}
 });
 
-var teleport = function ( x, y, callback, noanim ) {
+var teleport = function ( noanim, x, y ) {
 
-	x = x || $(window).width() / 2;
-	y = y || $(window).height() / 2;
 
 	var svgstyle = "position:fixed;top:0;left:0;width:100%;height:100%;z-index:9001;pointer-events:none;";
 
@@ -176,7 +177,13 @@ var teleport = function ( x, y, callback, noanim ) {
 			setTimeout(createblobs, 100);
 	}
 
-	this.start = function(noparticles){
+	this.start = function(x,y,noparticles){
+		x = x || $(window).width() / 2;
+		y = y || $(window).height() / 2;
+		bgc.attr({
+			cx: x,
+			cy: y
+		});
 		bgc.animate({
 			//yeah skrubs I learnt how to Pythagorean Theorem - a^2 = b^2 + c^2
 			r: Math.sqrt( Math.pow( $(window).width(), 2) + Math.pow( $(window).height(), 2))

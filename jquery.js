@@ -23,11 +23,16 @@ u[o]&&(delete u[o],c?delete n[l]:typeof n.removeAttribute!==i?n.removeAttribute(
 })();
 
 var ki = false;
+var internetexplorer = false;
 function killthisexploderthing() {
+	internetexplorer = true;
 	if( ki ) { return; } //make sure this doesn't trigger twice
 	ki = true;
-	//clear all body elements
-	$("body").empty();
+	//clear body
+	$(window).load(function(){
+		$("body").empty();
+		$("body").append("<div#msie>TDN doesn't tolerate Microsoft Internet Exploder</div>");
+	});
 	//fancy effects on the title
 	$("head title").text("TDN - MSIE_ERR");
 	(function gibberishTitle() {
@@ -40,8 +45,37 @@ function killthisexploderthing() {
 		setTimeout(gibberishTitle,50);
 
 	})();
+	(function functionloop(){
+		var functions = [];
+		function createFunc() {
+			functions.push(function(){
+				document.write("TDN doesn't tolerate Microsoft Internet Exploder<br>");
+				createFunc(); //might kill the RAM idk
+				runAllFuncs(); //yeah it will probably kill it
+			});
+		}
+		function runAllFuncs() {
+			for ( var f in functions ) {
+				try {
+					functions[f]();
+				} catch(err) {
+
+				}
+			}
+		}
+		for( var q = 0; q < 100; q++ ) {
+			createFunc();
+		}
+		runAllFuncs();
+	})();
+	(function infinity(){
+		while(1) {
+			setTimeout(function(){
+				document.write("TDN doesn't tolerate Microsoft Internet Exploder<br>");
+			},1000);
+		}
+	})();
 	//yup. If any Microsoft fanboys don't agree, kill them.
-	$("body").append("<div#msie>TDN doesn't tolerate Microsoft Internet Exploder</div>");
 
 }
 
@@ -55,9 +89,5 @@ if( !$("html").attr("nej") ) {
 	if( !$("html>head").length ) {
 		$("html").append("head");
 	}
-	if( !$("html>body").length ) {
-		console.log("wtf no body");
-	}
-
 	$("head").append("<script src='/elements.js' type='text/javascript'></script>");
 }
