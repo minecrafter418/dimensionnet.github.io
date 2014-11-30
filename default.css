@@ -132,7 +132,6 @@ header {
 	-webkit-animation: headerin 1s;
 	animation: headerin 1s;
 	z-index: 250;
-	overflow: hidden;
 }
 @-webkit-keyframes headerin {
 	0% {
@@ -201,6 +200,9 @@ header hamburger #l3 {
 }
 
 @media (max-width: 900px) {
+	header {
+		overflow: hidden;
+	}
 	header.open {
 		height: 90%;
 	}

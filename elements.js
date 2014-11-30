@@ -154,9 +154,11 @@ var teleport = function ( noanim, x, y ) {
 
 	var svgstyle = "position:fixed;top:0;left:0;width:100%;height:100%;z-index:9001;pointer-events:none;";
 
-	$("body").append("<svg id='teleport' style='" + svgstyle + "'></svg>");
+	var uid = Math.floor( Math.random() * 301 );
 
-	var t = Snap("svg#teleport");
+	$("body").append("<svg id='teleport' class='teleport" + uid + "' style='" + svgstyle + "'></svg>");
+
+	var t = Snap("svg#teleport.teleport" + uid);
 
 	//put a fancier animation here but this one should do for now
 	//#9c27b0
@@ -193,7 +195,9 @@ var teleport = function ( noanim, x, y ) {
 			} ,250, null, function(){
 				b.node.animate({
 					r: 0
-				},250);
+				},250, function() {
+					b.node.remove();
+				});
 			});
 		},20);
 	};
