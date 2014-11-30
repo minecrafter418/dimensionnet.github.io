@@ -38,6 +38,10 @@ $(document).ready(function(){
 	$("body").empty();
 	$("body").append("<content>" + ob + "</content>");
 
+	if( !$("head title").length ) {
+		$("head").append("<title>TDN</title>");
+	}
+
 	var loadedHeader = false;
 	var loadedFooter = false;
 
