@@ -277,7 +277,7 @@ header hamburger #l3 {
 
 footer {
 	background: rgba(0,0,0,.5);
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	left: 0;
 	width: 100%;
