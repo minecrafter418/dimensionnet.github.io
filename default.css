@@ -132,6 +132,7 @@ header {
 	-webkit-animation: headerin 1s;
 	animation: headerin 1s;
 	z-index: 250;
+	overflow: hidden;
 }
 @-webkit-keyframes headerin {
 	0% {
