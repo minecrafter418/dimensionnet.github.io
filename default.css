@@ -22,11 +22,7 @@
 body {
 	background: #eee;
 	font-family: 'Montserrat', sans-serif;
-	opacity: 0;
 	overflow-y: hidden;
-}
-body.vsb {
-	opacity: 1;
 }
 
 svg#teleport {

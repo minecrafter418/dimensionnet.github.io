@@ -5,6 +5,7 @@
 
 var canAddV = false;
 var isLoaded = false;
+var tpload;
 $(document).ready(function(){
 
 	//resources that should be present on every page
@@ -39,11 +40,14 @@ $(document).ready(function(){
 
 	var loadedHeader = false;
 	var loadedFooter = false;
+
+	tpload = new teleport(null, null, null, true);
+	tpload.start();
 	function checkLd() {
 		if( loadedHeader && loadedFooter ) {
 			canAddV = true;
 			if( isLoaded ) {
-				$("body").addClass("vsb");
+				tpload.stop();
 			}
 			
 			//event handlers
@@ -56,15 +60,15 @@ $(document).ready(function(){
 				}
 				var t = new teleport(e.pageX, e.pageY,function(){
 				});
-				t.start();
+				t.start(true);
 				var d = this;
 				setTimeout(function(){
 					$("body>*:not(#teleport)").remove();
-					t.stop();
+					//t.stop();
 					setTimeout(function(){
 						document.location = $(d).attr("href") || "/";
-					},1000);
-				},500);
+					},10);
+				},200);
 			});
 			$("header hamburger").click(function(){
 				$("header").toggleClass("open");
@@ -103,22 +107,26 @@ $(document).ready(function(){
 $(window).load(function(){
 	isLoaded = true;
 	if( canAddV ) {
-		$("body").addClass("vsb");
+		tpload.stop();
 	}
 });
 
-var teleport = function ( x, y, callback ) {
+var teleport = function ( x, y, callback, noanim ) {
 
 	x = x || $(window).width() / 2;
 	y = y || $(window).height() / 2;
 
-	$("body").append("<svg id='teleport'></svg>");
+	var svgstyle = "position:fixed;top:0;left:0;width:100%;height:100%;z-index:9001;pointer-events:none;";
+
+	$("body").append("<svg id='teleport' style='" + svgstyle + "'></svg>");
 
 	var t = Snap("svg#teleport");
 
 	//put a fancier animation here but this one should do for now
 	//#9c27b0
-	var bgc = t.circle(x,y, 0).attr({
+	var bgc = t.circle(x,y, noanim ? 
+		Math.sqrt( Math.pow( $(window).width(), 2) + Math.pow( $(window).height(), 2))
+		: 0).attr({
 		fill: '#280A2E'
 	});
 
@@ -164,13 +172,15 @@ var teleport = function ( x, y, callback ) {
 			setTimeout(createblobs, 100);
 	}
 
-	this.start = function(){
+	this.start = function(noparticles){
 		bgc.animate({
 			//yeah skrubs I learnt how to Pythagorean Theorem - a^2 = b^2 + c^2
 			r: Math.sqrt( Math.pow( $(window).width(), 2) + Math.pow( $(window).height(), 2))
 		},100);
-		cb = true;
-		createblobs();
+		if( !noparticles ) {
+			cb = true;
+			createblobs();
+		}
 	};
 	this.stop = function() {
 		bgc.animate({
