@@ -65,8 +65,7 @@ $(document).ready(function(){
 					win.focus();
 					return;
 				}
-				var t = new teleport(function(){
-				});
+				var t = new teleport();
 				t.start(e.pageX, e.pageY, true);
 				var d = this;
 				setTimeout(function(){
@@ -79,6 +78,9 @@ $(document).ready(function(){
 			});
 			$("header hamburger").click(function(){
 				$("header").toggleClass("open");
+			});
+			$("footer").click(function(){
+				$("footer").toggleClass("open");
 			});
 		}
 	}
@@ -119,7 +121,8 @@ $(window).load(function(){
 });
 
 var teleport = function ( noanim, x, y ) {
-
+	x = x || $(window).width() / 2;
+	y = y || $(window).height() / 2;
 
 	var svgstyle = "position:fixed;top:0;left:0;width:100%;height:100%;z-index:9001;pointer-events:none;";
 
