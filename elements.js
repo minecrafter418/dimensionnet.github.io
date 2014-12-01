@@ -86,22 +86,50 @@ $(document).ready(function(){
 			var movingHeader = false;
 			var mh_lasty = 0;
 			var mh_starty = 0;
+			var mh_percentage = 0;
 			$("header").bind("touchstart", function(e){
 				// only in "mobile" mode
-				if( $(window).width() > 900 ) {
+				if( $(window).width() >= 900 ) {
+					return;
+				}
+				if( $(window).height() <= 400 ) {
 					return;
 				}
 				movingHeader = true;
 				$("header").addClass("noanim");
 				mh_starty = e.originalEvent.touches[0].pageY - $("header").height();
+				if( $("header").hasClass("open") ) {
+					mh_percentage = 0;
+				} else {
+					mh_percentage = 1;
+				}
 			});
 			$(document).bind("touchmove", function(e){
 				if( movingHeader ) {
 					$("header").css("height", e.originalEvent.touches[0].pageY - mh_starty);
 					mh_lasty = e.originalEvent.touches[0].pageY - mh_starty;
+					mh_percentage = ( $("header").height() - 56 ) / ( $(window).height() * 0.9 - 56 );
+					
+					$("header #ptabs").css("opacity", mh_percentage )
+					.css("bottom", ( 100 * ( 1 - mh_percentage ) ) + "px" );
+					$("header #ptitle").css("opacity", 1 - mh_percentage )
+					.css("bottom", ( 30 * ( 1 - mh_percentage ) - 12 ) + "px" );
+
+					$("header hamburger").css("transform","rotate(" + (180 * mh_percentage ) + "deg)");
+
+					$("header hamburger #l1").css("transform","rotate(" + (45 * mh_percentage) + "deg)")
+					.css("top", 5 * mh_percentage + 19 );
+					$("header hamburger #l3").css("transform","rotate(" + (-45 * mh_percentage) + "deg)")
+					.css("top", -5 * mh_percentage + 29 );
+					$("header hamburger #l2").css("left", ( 9 * mh_percentage ) + 15 )
+					.css("width", 18 * (1 - mh_percentage) );
 				}
 			}).bind("touchend", function(e){
 				$("header").css("height","");
+				$("header #ptabs").css("opacity","").css("bottom","");
+				$("header #ptitle").css("opacity","").css("bottom","");
+				$("header hamburger").css("transform","")
+				$("header hamburger *").css("transform","").css("top","").css("left","").css("width","");
 				$("header").removeClass("noanim");
 				if( mh_lasty < ( $(window).height() / 100 * 45 ) ) {
 					$("header").removeClass("open");
