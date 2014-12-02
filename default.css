@@ -78,22 +78,24 @@ a:hover {
 	color: #fff;
 }
 a::after {
+	bottom: 50%;
+	pointer-events: none;
+	-webkit-transform: translateX(-50%) scale(0);
+	-webkit-transform-origin: 50% 100%;
+	padding: 10px;
+	background: #9c27b0;
+	transform: translateX(-50%) scale(0);
+	transform-origin: 50% 100%;
 	content: attr(href);
 	position: absolute;
-	bottom: 0;
-	color: #fff;
-	pointer-events: none;
 	left: 50%;
-	-webkit-transform: translateX(-50%) scale(0);
-	transform: translateX(-50%) scale(0);
-	background: #9c27b0;
-	padding: 10px;
+	color: #fff;
 }
 a::before {
 	content: '';
 	position: absolute;
 	background: #9c27b0;
-	bottom: 50%;
+	bottom: 0;
 	left: 50%;
 	width: 10px;
 	height: 10px;
@@ -102,11 +104,12 @@ a::before {
 	pointer-events: none;
 }
 a:hover::after {
-	bottom: 100%;
 	-webkit-transform: translateX(-50%) scale(1);
 	transform: translateX(-50%) scale(1);
+	bottom: 100%;
 }
 a:hover::before {
+	bottom: 50%;
 	-webkit-transform: translate(-50%,-50%) rotate(45deg) scale(1);
 	transform: translate(-50%,-50%) rotate(45deg) scale(1);
 }
