@@ -4,8 +4,30 @@
 		<title>TDN - 404</title>
 
 		<script src='/jquery.js'></script>
+		<style>
+			#teleport {
+				z-index: 100!important;
+			}
+			body::before {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				content: 'Error 404';
+				-webkit-transform: translate(-50%,-50%);
+				transform: translate(-50%,-50%);
+				z-index: 1000;
+				color: #fff;
+				font-size: 200%;
+			}
+		</style>
+		<script type='text/javascript'>
+			$(document).ready(function(){
+				var tp = new teleport();
+				tp.start();
+			});
+		</script>
 	</head>
 	<body>
-		404
+
 	</body>
 </html>

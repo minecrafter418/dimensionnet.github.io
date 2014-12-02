@@ -176,7 +176,7 @@ $(window).load(function(){
 	}
 });
 
-var teleport = function ( noanim, x, y ) {
+var teleport = function ( noanim, x, y) {
 	x = x || $(window).width() / 2;
 	y = y || $(window).height() / 2;
 

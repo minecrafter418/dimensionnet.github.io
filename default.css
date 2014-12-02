@@ -31,13 +31,13 @@ body {
 }
 
 svg#teleport {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
 	height: 100%;
-	z-index: 9001; /* over 9000 */
+	z-index: 9001;
 	pointer-events: none;
+	top: 0;
+	width: 100%;
+	position: fixed;
+	left: 0; /* over 9000 */
 }
 svg#teleport * {
 	pointer-events: all;
