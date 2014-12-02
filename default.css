@@ -97,7 +97,6 @@ a::before {
 	left: 50%;
 	width: 10px;
 	height: 10px;
-	z-index: -1;
 	-webkit-transform: translate(-50%,-50%) rotate(45deg) scale(0);
 	transform: translate(-50%,-50%) rotate(45deg) scale(0);
 	pointer-events: none;
@@ -211,16 +210,6 @@ header hamburger #l3 {
 	}
 	header.open {
 		height: 90%;
-	}
-	header #plogo {
-		width: 56px;
-		height: 56px;
-		margin: 0;
-	}
-	header.open #plogo {
-		margin: 4px;
-		width: 48px;
-		height: 48px;
 	}
 	header #ptitle {
 		font-size: 15px;
