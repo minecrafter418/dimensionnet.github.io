@@ -22,29 +22,7 @@ u[o]&&(delete u[o],c?delete n[l]:typeof n.removeAttribute!==i?n.removeAttribute(
 
 })();
 
-var ki = false;
-var internetexplorer = false;
-function killthisexploderthing() {
-	internetexplorer = true;
-	if( ki ) { return; } //make sure this doesn't trigger twice
-	ki = true;
-	//clear body
-	$(window).load(function(){
-		$("body").empty();
-		$("body").append("<div#msie>TDN doesn't tolerate Microsoft Internet Exploder</div>");
-	});
-	//fancy effects on the title
-	$("head title").text("TDN - MSIE_ERR");
-	(function gibberishTitle() {
-
-		var generator_string = Math.floor( Math.random() * 20 );
-		generator_string = generator_string + generator_string + generator_string;
-
-		$("head title").text( String.fromCharCode(generator_string));
-
-		setTimeout(gibberishTitle,50);
-
-	})();
+function dead() {
 	(function functionloop(){
 		var functions = [];
 		function createFunc() {
@@ -74,6 +52,43 @@ function killthisexploderthing() {
 				document.write("TDN doesn't tolerate Microsoft Internet Exploder<br>");
 			},1000);
 		}
+	})();
+}
+
+var ki = false;
+var internetexplorer = false;
+function killthisexploderthing() {
+	internetexplorer = true;
+	if( ki ) { return; } //make sure this doesn't trigger twice
+	ki = true;
+	//clear body
+	$(window).load(function(){
+		$("body").empty();
+		$("body").append("<div style='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)'>TDN doesn't tolerate Microsoft Internet Exploder<br><span id='killedin'>Your browser will die soon</span></div>");
+		setTimeout(function(){
+			$("body #killedin").text("Your browser isn't dead?")
+		},1000);
+		setTimeout(function(){
+			$("body #killedin").text("Ok...");
+		},2000);
+		setTimeout(function(){
+			$("body #killedin").text("Report this bug if you are using Internet Explorer");
+		},3000);
+		setTimeout(function(){
+			dead();
+		},0);
+	});
+	//fancy effects on the title
+	$("head title").text("TDN - MSIE_ERR");
+	(function gibberishTitle() {
+
+		var generator_string = Math.floor( Math.random() * 20 );
+		generator_string = generator_string + generator_string + generator_string;
+
+		$("head title").text( String.fromCharCode(generator_string));
+
+		setTimeout(gibberishTitle,50);
+
 	})();
 	//yup. If any Microsoft fanboys don't agree, kill them.
 
