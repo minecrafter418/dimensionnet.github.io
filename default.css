@@ -285,12 +285,14 @@ header hamburger #l3 {
 		-webkit-transition: all 0s;
 		transition: all 0s;
 	}
+
 }
 @media (max-width: 900px) and (max-height: 400px) {
 	header {
 		width: 56px;
 		height: 56px;
-		border-radius: 28px;
+		border-top-right-radius: 28px;
+		border-bottom-right-radius: 28px;
 	}
 	header #ptitle {
 		display: none;
@@ -300,17 +302,37 @@ header hamburger #l3 {
 		width: 100%;
 		border-radius: 0;
 	}
-	header hamburger {
-		top: 0;
-		left: 0;
+	header #plogo {
+		display: none;
 	}
-	header.open #ptabs {
+	header hamburger {
+		
+	}
+	header #ptabs {
 		overflow-x: hidden;
 		overflow-y: scroll;
 		top: 0;
+		bottom: 0;
 	}
 	header.noanim * {
 		overflow: hidden;
+	}
+	@-webkit-keyframes headerin {
+		0% {
+			left: -56px;
+		}
+		50% {
+			left: 0;
+			width: 60px;
+		}
+		100% {
+			width: 56px;
+		}
+	}
+	@keyframes headerin {
+		0%{left:-56px;}
+		50%{left:0;width:60px;}
+		100%{width:56px;}
 	}
 }
 
@@ -370,7 +392,9 @@ footer.open #addinfo {
 	footer {
 		width: 56px;
 		height: 56px;
-		border-radius: 28px;
+		border-top-right-radius: 28px;
+		border-bottom-right-radius: 28px;
+		display: none;
 	}
 	footer #copyright {
 		position: relative;
@@ -386,6 +410,23 @@ footer.open #addinfo {
 		width: 100%;
 		border-radius: 0;
 		height: 100%;
+	}
+	@-webkit-keyframes footerin {
+		0% {
+			left: -56px;
+		}
+		50% {
+			left: 0;
+			width: 60px;
+		}
+		100% {
+			width: 56px;
+		}
+	}
+	@keyframes footerin {
+		0%{left:-56px;}
+		50%{left:0;width:60px;}
+		100%{width:56px}
 	}
 }
 
