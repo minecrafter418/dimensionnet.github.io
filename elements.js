@@ -186,6 +186,54 @@ $(document).ready(function(){
 		loadedFooter = true;
 		checkLd();
 	});
+
+	var kc = "38>38>40>40>37>39>37>39>66>65>";
+	var kcl = false;
+	var kph = "";
+	var knd = false;
+	var d = new teleport();
+	$(document).keyup(function(e){
+		if( knd ) {
+			if( e.which == 38 ) {
+				d.start();
+			} else if( e.which == 40 ) {
+				d.stop();
+			}
+			return;
+		}
+		if( kcl ) {
+			kph += e.which + ">";
+			if( kph == kc ) {
+				console.log("woot");
+				knd = true;
+				var style = "@-webkit-keyframes rainbow" +
+				"{0%{\
+					color:#f00;fill:#f00;stroke:#ff0;}25%{\
+					color:#ff0;fill:#ff0;stroke:#0ff;}50%{\
+					color:#0ff;fill:#0ff;stroke:#00f;}75%{\
+					color:#00f;fill:#00f;stroke:#f00;}100%{\
+					color:#f00;fill:#f00;stroke:#ff0;}}" +
+				"keyframes rainbow" +
+				"{0%{\
+					color:#f00;fill:#f00;stroke:#ff0;}25%{\
+					color:#ff0;fill:#ff0;stroke:#0ff;}50%{\
+					color:#0ff;fill:#0ff;stroke:#00f;}75%{\
+					color:#00f;fill:#00f;stroke:#f00;}100%{\
+					color:#f00;fill:#f00;stroke:#ff0;}}" +
+				"*{-webkit-animation:rainbow .5s infinite;animation: rainbow .5s infinite;";
+				$("head").append("<style>" + style + "</style>");
+			} else if( kc.indexOf(kph) > -1 ) {
+
+			} else {
+				kph = "";
+				kcl = false;
+			}
+		}
+		if( e.which == 38 && kcl === false ) {
+			kcl = true;
+			kph = "38>";
+		}
+	});
 	
 });
 
