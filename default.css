@@ -37,7 +37,7 @@ svg#teleport {
 	top: 0;
 	width: 100%;
 	position: fixed;
-	left: 0; /* over 9000 */
+	left: 0;
 }
 svg#teleport * {
 	pointer-events: all;
@@ -120,6 +120,12 @@ a:hover::before {
 	display: block;
 	font-size: 2em;
 	text-align: center;
+}
+.inv {
+	color: #fff;
+}
+.invb {
+	background: #222;
 }
 
 @media (max-width: 900px) and (max-height: 400px) {
