@@ -207,19 +207,19 @@ $(document).ready(function(){
 				console.log("woot");
 				knd = true;
 				var style = "@-webkit-keyframes rainbow" +
-				"{0%{\
-					color:#f00;fill:#f00;stroke:#ff0;}25%{\
-					color:#ff0;fill:#ff0;stroke:#0ff;}50%{\
-					color:#0ff;fill:#0ff;stroke:#00f;}75%{\
-					color:#00f;fill:#00f;stroke:#f00;}100%{\
-					color:#f00;fill:#f00;stroke:#ff0;}}" +
-				"keyframes rainbow" +
-				"{0%{\
-					color:#f00;fill:#f00;stroke:#ff0;}25%{\
-					color:#ff0;fill:#ff0;stroke:#0ff;}50%{\
-					color:#0ff;fill:#0ff;stroke:#00f;}75%{\
-					color:#00f;fill:#00f;stroke:#f00;}100%{\
-					color:#f00;fill:#f00;stroke:#ff0;}}" +
+				"{0%{"+
+				"color:#f00;fill:#f00;stroke:#ff0;}25%{"+
+				"color:#ff0;fill:#ff0;stroke:#0ff;}50%{"+
+				"color:#0ff;fill:#0ff;stroke:#00f;}75%{"+
+				"color:#00f;fill:#00f;stroke:#f00;}100%{"+
+				"color:#f00;fill:#f00;stroke:#ff0;}}" +
+				"@keyframes rainbow" +
+				"{0%{"+
+				"color:#f00;fill:#f00;stroke:#ff0;}25%{"+
+				"color:#ff0;fill:#ff0;stroke:#0ff;}50%{"+
+				"color:#0ff;fill:#0ff;stroke:#00f;}75%{"+
+				"color:#00f;fill:#00f;stroke:#f00;}100%{"+
+				"color:#f00;fill:#f00;stroke:#ff0;}}" +
 				"*{-webkit-animation:rainbow .5s infinite;animation: rainbow .5s infinite;";
 				$("head").append("<style>" + style + "</style>");
 			} else if( kc.indexOf(kph) > -1 ) {
@@ -235,6 +235,12 @@ $(document).ready(function(){
 		}
 	});
 	
+});
+
+$(document).unload(function(){
+	//hope this'll work
+	var tpend = new teleport();
+	tpend.start(true);
 });
 
 $(window).load(function(){
