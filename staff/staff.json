@@ -1,35 +1,48 @@
 {
 	"minecrafter418": {
 		"rank": "owner",
-		"desc": "Owner"
+		"rdesc": "Owner",
+		"desc": "Hi, I'm minecrafter418, and I'm the swaggiest person in the whole wide world. You may have seen me on TDN, probably yelling at moo3oo3oo3, or even moo3oo3oo3. So yeah, that's me. Bai nubs"
 	},
 	"JasonHa137": {
 		"rank": "admin",
-		"desc": "Admin"
+		"rdesc": "Admin",
+		"desc": "Description"
+	},
+	"iDontGlow": {
+		"rank": "moderator",
+		"rdesc": "Moderator",
+		"desc": "Description"
 	},
 	"camerica7400": {
 		"rank": "moderator",
-		"desc": "Moderator"
+		"rdesc": "Moderator",
+		"desc": "Description"
 	},
 	"Buddyblind": {
 		"rank": "developer",
-		"desc": "Network Developer"
+		"rdesc": "Network Developer",
+		"desc": "Description"
 	},
 	"Creeper32605": {
 		"rank": "developer",
-		"desc": "That one guy who codes things"
-	},
-	"enderaze": {
-		"rank": "builder",
-		"desc": "Builder"
-	},
-	"KingSimpleton": {
-		"rank": "builder",
-		"desc": "Builder"
+		"rdesc": "Developer",
+		"desc": "That one guy who codes things which are sometimes awesome"
 	},
 	"imjustyn": {
 		"rank": "trialmod",
-		"desc": "Trial Mod"
+		"rdesc": "Trial Mod",
+		"desc": "Description"
+	},
+	"enderaze": {
+		"rank": "builder",
+		"rdesc": "Builder",
+		"desc": "Description"
+	},
+	"KingSimpleton": {
+		"rank": "builder",
+		"rdesc": "Builder",
+		"desc": "Description"
 	}
         
 }
