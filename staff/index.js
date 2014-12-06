@@ -36,10 +36,22 @@ $(document).ready(function(){
 
 });
 
+function getSkin(name) {
+	var url;
+	url = "http://minecraft-skin-viewer.com/body.php?u=" + name + "&s=300";
+	//url = "http://skins.minecraft.net/MinecraftSkins/" + name + ".png";
+	return url;
+}
+
+function setSkin(name) {
+	var url = getSkin(name);
+	$("#skin").attr("src", url);
+	//fuck js canvas. It doesn't work eh
+}
+
 function setInfo(name, rank, desc, colour) {
 	$("#staffinfo #sname").text(name);
-	$("#staffinfo #skin").attr("src", "http://minecraft-skin-viewer.com/body.php?u=" +
-		name +"&s=300");
+	setSkin(name);
 	$("#staffinfo #srank").text(rank);
 	$("#staffinfo #sdesc").text(desc);
 	$("#staffinfo #stdiv").css("background", colour);
