@@ -7,22 +7,22 @@
 	"JasonHa137": {
 		"rank": "admin",
 		"rdesc": "Admin",
-		"desc": "Description"
+		"desc": "Some random aussie"
 	},
 	"iDontGlow": {
 		"rank": "moderator",
 		"rdesc": "Moderator",
-		"desc": "Description"
+		"desc": "He doesn't glow"
 	},
 	"camerica7400": {
 		"rank": "moderator",
 		"rdesc": "Moderator",
-		"desc": "Description"
+		"desc": "Random guy. Apparently he's Moderator"
 	},
 	"Buddyblind": {
 		"rank": "developer",
 		"rdesc": "Network Developer",
-		"desc": "Description"
+		"desc": "Your very personal blind buddy"
 	},
 	"Creeper32605": {
 		"rank": "developer",
@@ -32,17 +32,17 @@
 	"imjustyn": {
 		"rank": "trialmod",
 		"rdesc": "Trial Mod",
-		"desc": "Description"
+		"desc": "He's just yn"
 	},
 	"enderaze": {
 		"rank": "builder",
 		"rdesc": "Builder",
-		"desc": "Description"
+		"desc": "Next-gen enderman"
 	},
 	"KingSimpleton": {
 		"rank": "builder",
 		"rdesc": "Builder",
-		"desc": "Description"
+		"desc": "Incredibly simple."
 	}
         
 }
