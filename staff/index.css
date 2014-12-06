@@ -3,8 +3,8 @@
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	-webkit-transform: translate(-50%,-50%);
-	transform: translate(-50%,-50%);
+	margin-top: -200px;
+	margin-left: -300px;
 	width: 600px;
 	height: 400px;
 	background: #eee;
@@ -83,8 +83,6 @@
 	text-align: center;
 	-webkit-transition: background 0s;
 	transition: background 0s;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
 }
 #staffinfo.animt #stdiv {
 	height: 400px;
@@ -132,6 +130,56 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 }
+
+@media (max-width: 700px), (max-height: 500px) {
+	#staffinfo {
+		top: 56px;
+		left: 0;
+		right: 0;
+		bottom: 56px;
+		width: auto;
+		height: auto;
+		z-index: 300;
+		-webkit-transform: translate(0,0);
+		transform: translate(0,0);
+		margin-top: 0;
+		margin-left: 0;
+	}
+	#staffinfo #stdiv #stdliv {
+		width: auto;
+		margin-left: 56px;
+	}
+	#staffinfo closebtn {
+		width: 48px;
+		height: 48px;
+		border-radius: 24px;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	#staffinfo #sldiv, #staffinfo #srdiv {
+		float: none;
+	}
+	#staffinfo #sldiv {
+		height: 100px;
+		overflow: hidden;
+		text-align: center;
+		width: 100%;
+	}
+}
+@media (max-width: 330px) {
+	#staffinfo #stdiv #stdliv {
+		opacity: 0;
+		width: 0;
+	}
+}
+@media (max-height: 400px) and (max-width: 900px) {
+	#staffinfo {
+		bottom: 0;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+}
+
 
 staff {
 	background: #555;

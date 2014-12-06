@@ -56,17 +56,20 @@ function anim(fobj,reverse) {
 	} else {
 		$("#sib").removeClass("open");
 	}
+	var ism = false;
+	if ( $(window).height() <= 500 ) { ism = true; }
+	if( $(window).width() <= 700 ) { ism = true; }
 	var initCSS = {
-		top: "50%",
-		left: "50%",
+		top: ism ? "56px" : "50%",
+		left: ism ? 0 : "50%",
 		width: $("#staffinfo").css("width"),
 		height: $("#staffinfo").css("height"),
 		"border-top-left-radius": $("#staffinfo").css("border-top-left-radius"),
 		"border-top-right-radius": $("#staffinfo").css("border-top-right-radius"),
 		"border-bottom-left-radius": $("#staffinfo").css("border-bottom-left-radius"),
 		"border-bottom-right-radius": $("#staffinfo").css("border-bottom-right-radius"),
-		"-webkit-transform": $("#staffinfo").css("transform"),
-		transform: $("#staffinfo").css("transform")
+		"margin-top": $("#staffinfo").css("margin-top"),
+		"margin-left": $("#staffinfo").css("margin-left")
 	};
 	var targetCSS = {
 		top: $(fobj).offset().top,
@@ -77,8 +80,8 @@ function anim(fobj,reverse) {
 		"border-top-right-radius": $(fobj).css("border-top-right-radius"),
 		"border-bottom-left-radius": $(fobj).css("border-bottom-left-radius"),
 		"border-bottom-right-radius": $(fobj).css("border-bottom-right-radius"),
-		"-webkit-transform": "translate(0,0)",
-		transform: "translate(0,0)"
+		"margin-top": 0,
+		"margin-left": 0
 	};
 	$("#staffinfo").css( reverse ? initCSS : targetCSS);
 	setTimeout(function(){
@@ -91,12 +94,26 @@ function anim(fobj,reverse) {
 				$("#staffinfo").removeClass("animt");
 			}
 			setTimeout(function(){
-				$("#staffinfo").removeClass("anim").removeClass("animd");
+				$("#staffinfo").removeClass("anim");
 				if( reverse ) {
 					$("#staffinfo").removeClass("open").removeClass("animt");
 					$("staff").removeClass("open");
 					$("#staffinfo").css(initCSS);
 				}
+				setTimeout(function(){
+					$("#staffinfo").css({
+						top: "",
+						left: "",
+						width: "",
+						height: "",
+						"border-top-left-radius": "",
+						"border-top-right-radius": "",
+						"border-bottom-left-radius": "",
+						"border-bottom-right-radius": "",
+						"margin-top": "",
+						"margin-left": ""
+					}).removeClass("animd");
+				},10);
 			},500);
 		},10);
 	},10);
