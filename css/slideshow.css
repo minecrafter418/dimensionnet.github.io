@@ -41,6 +41,52 @@ slideshow sli.after {
 	z-index: 1;
 }
 
+slideshow slbutton {
+	position: fixed;
+	top: 50%;
+	left: 0;
+	width: 48px;
+	height: 48px;
+	background: rgba(0,0,0,.69);
+	z-index: 4;
+	border-radius: 24px;
+	pointer-events: all;
+	cursor: pointer;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+slideshow slbutton::before,
+slideshow slbutton::after {
+	content: '';
+	position: absolute;
+	background: #fff;
+	top: 50%;
+	left: 50%;
+	width: 9px;
+	height: 2px;
+	margin-top: -1px;
+	margin-left: -4.5px;
+}
+slideshow slbutton::before {
+	top: 21px;
+}
+slideshow slbutton::after {
+	top: 27px;
+}
+slideshow slbutton::before,
+slideshow slbutton.sl-rbtn::after {
+	-webkit-transform: rotate(-45deg);
+}
+slideshow slbutton::after,
+slideshow slbutton.sl-rbtn::before {
+	-webkit-transform: rotate(45deg);
+}
+
+slideshow slbutton.sl-rbtn {
+	right: 0;
+	left: auto;
+}
+
 @media (max-aspect-ratio: 960/509) {
 	slideshow sli img {
 		width: auto;

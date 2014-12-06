@@ -28,9 +28,9 @@ $(document).ready(function(){
 			}
 			d.addClass("selected");
 		};
-		this.before = function() {
+		this.prev = function() {
 			var d;
-			if( $(n).find("sli.selected").next("sli").length ) {
+			if( $(n).find("sli.selected").prev("sli").length ) {
 				d = $(n).find("sli.selected").prev("sli");
 			} else {
 				d = $(n).find("sli").last();
@@ -63,10 +63,26 @@ $(document).ready(function(){
 			out += "<sli><img src='" + images[x] + "'></sli>";
 		}
 		$(this).html(out);
+		$(this).append("<slbutton class='sl-lbtn'></slbutton>");
+		$(this).append("<slbutton class='sl-rbtn'></slbutton>");
 		var sl = new slideshow(this);
-		setInterval(function(){
+		var interval = setInterval(function(){
 			sl.next();
 		},5000);
+		$(this).find("slbutton.sl-lbtn").click(function(){
+			sl.prev();
+			clearInterval(interval);
+			interval = setInterval(function(){
+				sl.next();
+			},5000);
+		});
+		$(this).find("slbutton.sl-rbtn").click(function(){
+			sl.next();
+			clearInterval(interval);
+			interval = setInterval(function(){
+				sl.next();
+			},5000);
+		});
 	});
 
 });

@@ -1,10 +1,70 @@
 
+content>.title {
+	background: #673AB7;
+	color: #fff;
+}
+
 #rules {
-	list-style-type: decimal;
+	list-style-type: none;
+	padding-left: 0;
+	text-align: center;
 }
 #rules li {
-	padding: 10px 0;
+	padding: 10px 30px;
+	display: block;
+}
+#rules>rule {
+	background: #2196F3;
+	color: #fff;
+	width: 33%;
+	display: inline-block;
+	height: 500px;
+	vertical-align: top;
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+}
+#rules>rule .ruleexp {
+	position: absolute;
+	top: 8px;
+	left: 50%;
+	height: 242px;
+	margin-left: -121px;
+}
+#rules>rule .ruledsc {
+	position: absolute;
+	top: 250px;
+	width: 100%;
+	box-sizing: border-box;
+}
+#rules>rule .ruledsc .rttle {
+	font-size: 130%;
+}
+#rules>rule .ruledsc ul {
+	padding-left: 0;
+}
+#rules rule#rres {
+	background: #009688;
+}
+#rules rule#radv {
+	background: #F44336;
+}
+#rules>li ul {
+
 }
 #content #rules a {
 	color: #000;
+}
+
+@media ( max-width: 900px ) {
+
+	#rules>rule {
+		width: 100%;
+		display: block;
+		min-height: 100%;
+	}
+	#rules>rule .ruledsc {
+		margin-top: 20px;
+	}
+
 }
