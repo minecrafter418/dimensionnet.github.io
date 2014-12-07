@@ -57,9 +57,27 @@ function setInfo(name, rank, desc, colour) {
 	$("#staffinfo #stdiv").css("background", colour);
 }
 function anim(fobj,reverse) {
+
 	if( $("#staffinfo").hasClass("animd") ) {
 		return false;
 	}
+	if( !reverse ) {
+		$("#sib").addClass("open");
+		$(fobj).morph("#staffinfo",500,{
+			pname: $(fobj).find(".name")
+		},{
+			
+		},true);
+	} else {
+		$("#sib").removeClass("open");
+		$("#staffinfo").morph("staff.mr-hidden",500,{
+
+		},{
+
+		},true);
+	}
+	return true;
+	//should work
 	$("staff").removeClass("open");
 	$(fobj).addClass("open");
 	$("#staffinfo").addClass("animd").addClass("animt").addClass("open");

@@ -15,10 +15,10 @@
 	-webkit-transition: all 0s;
 	transition: all 0s;
 	z-index: 50;
-	visibility: hidden;
-	opacity: 0;
-}
-#staffinfo.open {
+	/*visibility: hidden;
+	opacity: 0;*/
+/*}
+#staffinfo.open {*/
 	visibility: visible;
 	opacity: 1;
 }
