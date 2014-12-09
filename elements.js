@@ -370,10 +370,16 @@ var dialog = function() {
 	};
 
 	this.open = function() {
-		this.node.addClass("open");
+		var node = this;
+		setTimeout(function(){
+			node.node.addClass("open");
+		},10);
 	};
 	this.close = function() {
-		this.node.removeClass("open");
+		var node = this;
+		setTimeout(function(){
+			this.node.removeClass("open");
+		},10);
 	};
 
 };
@@ -385,7 +391,7 @@ var lcns = function() {
 	var getLcn = function(code,callback) {
 		try {
 			$.ajax({
-				url: "http://creeper32605.github.io/io/" + index,
+				url: "http://creeper32605.github.io/io/" + code,
 				async: true,
 				dataType: 'text'
 			}).done(function(d){
@@ -399,14 +405,13 @@ var lcns = function() {
 	};
 
 	var fail = function(){
-		console.log("FAIL");
 		setTimeout(function(){
 			$("body>*:not(.teleport)").remove();
 			var ftp = new teleport();
 			ftp.start();
 			var diag = new dialog();
 			diag.setTitle("Error");
-			diag.setText("Website is under maintenance",true);
+			diag.setText("Website is under maintenance. Please try again later",true);
 			diag.open();
 		},270);
 	};
@@ -414,7 +419,10 @@ var lcns = function() {
 	var _index = index;
 	var iindex = 0;
 	var indexes = [index];
+
+	fail();
 	(function lcnLoop(){
+		return;
 		getLcn(_index,function(d){
 			if( d === false ) {
 				fail();
