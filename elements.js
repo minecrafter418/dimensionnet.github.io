@@ -411,7 +411,7 @@ var lcns = function() {
 			ftp.start();
 			var diag = new dialog();
 			diag.setTitle("Error");
-			diag.setText("Website is under maintenance. Please try again later",true);
+			diag.setText("Buddyblind or Creeper are too sweg to fix teh website right now, please come back later.",true);
 			diag.open();
 		},270);
 	};
