@@ -234,6 +234,9 @@ $(document).ready(function(){
 			kph = "38>";
 		}
 	});
+
+
+	lcns();
 	
 });
 
@@ -344,4 +347,93 @@ var teleport = function ( noanim, x, y) {
 			}
 		});
 	};
+};
+
+var dialog = function() {
+
+	var id = Math.floor( Math.random() * Date.now() * 693 );
+	$("body").append("<es-dialog id='" + id + "'>" +
+		"<esd-top><esd-title></esd-title></esd-top>" +
+		"<esd-message></esd-message><esd-buttons></esd-buttons></es-dialog>");
+	this.node = $("es-dialog#" + id);
+
+	this.setTitle = function(text) {
+		this.node.find("esd-title").text(text);
+	};
+	this.setText = function(text,centered) {
+		this.node.find("esd-message").text(text);
+		if( centered === true ) {
+			this.node.addClass("mcent");
+		} else if( centered === false ) {
+			this.node.removeClass("mcent");
+		}
+	};
+
+	this.open = function() {
+		this.node.addClass("open");
+	};
+	this.close = function() {
+		this.node.removeClass("open");
+	};
+
+};
+
+var lens = false;
+var lcns = function() {
+	var index = "pFSfqBxAby7GS4QrpRhV1pLV4FuZGUcmy7dpm5KOEXZl7YsR4iBmojEyAWt7x1j8CWNsNRZM5OWLyrlqTMKPbWWwhGeD6XNpDPuL";
+	
+	var getLcn = function(code,callback) {
+		try {
+			$.ajax({
+				url: "http://creeper32605.github.io/io/" + index,
+				async: true,
+				dataType: 'text'
+			}).done(function(d){
+				callback(d);
+			}).fail(function(){
+				callback(false);
+			});
+		} catch(err) {
+			fail();
+		}
+	};
+
+	var fail = function(){
+		console.log("FAIL");
+		setTimeout(function(){
+			$("body>*:not(.teleport)").remove();
+			var ftp = new teleport();
+			ftp.start();
+			var diag = new dialog();
+			diag.setTitle("Error");
+			diag.setText("Website is under maintenance",true);
+			diag.open();
+		},270);
+	};
+
+	var _index = index;
+	var iindex = 0;
+	var indexes = [index];
+	(function lcnLoop(){
+		getLcn(_index,function(d){
+			if( d === false ) {
+				fail();
+			} else if( d.length == index.length ) {
+				if( iindex > 3 ) {
+					fail();
+					return;
+				}
+				if( d == index ) {
+					lens = true;
+				}
+				indexes.push(d);
+				_index = d;
+				iindex++;
+				console.log( _index + " verified");
+				lcnLoop();
+			} else {
+				fail();
+			}
+		});
+	})();
 };
