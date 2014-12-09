@@ -411,7 +411,7 @@ var lcns = function() {
 			ftp.start();
 			var diag = new dialog();
 			diag.setTitle("Error");
-			diag.setText("Website is under maintenance. Please try again later",true);
+			diag.setText("Buddeh or Creepeh are too sweg. Please try again later",true);
 			diag.open();
 		},270);
 	};
